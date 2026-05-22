@@ -7,21 +7,20 @@ import config from "@/config";
 
 export const GET: APIRoute = async context => {
   const fonts = fontData["--font-heading"];
-  console.log(JSON.stringify(fonts, null, 2));
+  const headerFonts = fontData["--font-header"];
+  
   const regularFontPath = getFontPathByWeight(fonts, 500);
   const boldFontPath = getFontPathByWeight(fonts, 700);
+  const headerFontPath = getFontPathByWeight(headerFonts, 700);
 
-  if (regularFontPath === undefined || boldFontPath === undefined) {
+  if (regularFontPath === undefined || boldFontPath === undefined || headerFontPath === undefined) {
     throw new Error("Cannot find the font path.");
   }
 
-  const [regularData, boldData] = await Promise.all([
-    fetch(experimental_getFontFileURL(regularFontPath, context.url)).then(res =>
-      res.arrayBuffer()
-    ),
-    fetch(experimental_getFontFileURL(boldFontPath, context.url)).then(res =>
-      res.arrayBuffer()
-    ),
+  const [regularData, boldData, headerData] = await Promise.all([
+    fetch(experimental_getFontFileURL(regularFontPath, context.url)).then(res => res.arrayBuffer()),
+    fetch(experimental_getFontFileURL(boldFontPath, context.url)).then(res => res.arrayBuffer()),
+    fetch(experimental_getFontFileURL(headerFontPath, context.url)).then(res => res.arrayBuffer()),
   ]);
 
   const svg = await satori(
@@ -35,7 +34,7 @@ export const GET: APIRoute = async context => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "Lexend Deca",
+          fontFamily: "Lexend Exa",
         },
         children: [
           {
@@ -154,6 +153,12 @@ export const GET: APIRoute = async context => {
         {
           name: "Lexend Deca",
           data: boldData,
+          weight: 700,
+          style: "normal",
+        },
+        {
+          name: "Lexend Exa",
+          data: headerData,
           weight: 700,
           style: "normal",
         },
