@@ -8,29 +8,19 @@ import config from "@/config";
 export const GET: APIRoute = async context => {
   const fonts = fontData["--font-heading"];
   const testFont = fonts[3];
-  console.log("keys:", Object.keys(testFont ?? {}));
-  console.log("weight match:", testFont?.weight === "500");
-  console.log("style match:", testFont?.style === "normal");
-  console.log("src:", JSON.stringify(testFont?.src));
-  console.log("format match:", testFont?.src?.[0]?.format === "truetype");
-  console.log("fontData keys:", Object.keys(fontData));
   const headerFonts = fontData["--font-header"];
   
   const regularFontPath = fonts
-  .flatMap(f => f.src)
-  .find(s => s.format === "truetype")?.url;
+    .flatMap(f => f.src)
+    .find(s => s.format === "truetype")?.url;
   const boldFontPath = fonts
-  .filter(f => f.weight === "700")
-  .flatMap(f => f.src)
-  .find(s => s.format === "truetype")?.url;
+    .filter(f => f.weight === "700")
+    .flatMap(f => f.src)
+    .find(s => s.format === "truetype")?.url;
   const headerFontPath = headerFonts
-  .filter(f => f.weight === "700")
-  .flatMap(f => f.src)
-  .find(s => s.format === "truetype")?.url;
-  
-  console.log("regularFontPath:", regularFontPath);
-  console.log("boldFontPath:", boldFontPath);
-  console.log("headerFontPath:", headerFontPath);
+    .filter(f => f.weight === "700")
+    .flatMap(f => f.src)
+    .find(s => s.format === "truetype")?.url;
 
   if (regularFontPath === undefined || boldFontPath === undefined || headerFontPath === undefined) {
     throw new Error("Cannot find the font path.");
