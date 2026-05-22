@@ -38,7 +38,7 @@ export const GET: APIRoute = async ({ props, url }) => {
     throw new Error("Cannot find the font path.");
   }
 
-  const [regularData, boldData] = await Promise.all([
+  const [regularData, boldData, headerData] = await Promise.all([
     fetch(experimental_getFontFileURL(regularFontPath, url)).then(res => res.arrayBuffer()),
     fetch(experimental_getFontFileURL(boldFontPath, url)).then(res => res.arrayBuffer()),
     fetch(experimental_getFontFileURL(headerFontPath, url)).then(res => res.arrayBuffer()),
