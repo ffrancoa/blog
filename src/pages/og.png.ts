@@ -7,8 +7,8 @@ import config from "@/config";
 
 export const GET: APIRoute = async context => {
   const fonts = fontData["--font-heading"];
-  const regularFontPath = getFontPathByWeight(fonts, 500, { format: "woff2" });
-  const boldFontPath = getFontPathByWeight(fonts, 700, { format: "woff2" });
+  const regularFontPath = getFontPathByWeight(fonts, 500);
+  const boldFontPath = getFontPathByWeight(fonts, 700);
 
   if (regularFontPath === undefined || boldFontPath === undefined) {
     throw new Error("Cannot find the font path.");

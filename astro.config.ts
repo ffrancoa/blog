@@ -65,7 +65,7 @@ export default defineConfig({
       fallbacks: ["sans-serif"],
       weights: [700],
       styles: ["normal"],
-      formats: ["woff2", "woff"],
+      formats: ["woff2", "ttf"],
     },
     {
       name: "Lexend Deca",
@@ -74,7 +74,7 @@ export default defineConfig({
       fallbacks: ["sans-serif"],
       weights: [500, 600, 700],
       styles: ["normal"],
-      formats: ["woff2", "woff"],
+      formats: ["woff2", "ttf"],
     },
     {
       name: "Lexend Deca",
@@ -83,7 +83,7 @@ export default defineConfig({
       fallbacks: ["sans-serif"],
       weights: [400, 500, 600],
       styles: ["normal"],
-      formats: ["woff2", "woff"],
+      formats: ["woff2", "ttf"],
     },
     {
       name: "JetBrains Mono",
@@ -92,7 +92,7 @@ export default defineConfig({
       fallbacks: ["monospace"],
       weights: [500, 600, 700],
       styles: ["normal", "italic"],
-      formats: ["woff2", "woff"],
+      formats: ["woff2", "ttf"],
     },
   ],
   env: {
