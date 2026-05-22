@@ -13,10 +13,6 @@
       @apply text-foreground mb-3;
     }
 
-    h3 {
-      @apply italic;
-    }
-
     p,
     strong,
     ol,
@@ -85,6 +81,7 @@
     pre {
       @apply focus-visible:outline-accent focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-dashed;
     }
+    
   }
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
@@ -113,3 +110,8 @@
     }
   }
 }
+
+.katex-html {
+    @apply text-foreground;
+    -webkit-text-stroke: 0.1px currentColor;
+  }

@@ -16,6 +16,8 @@ import {
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import config from "./astro-paper.config";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 export default defineConfig({
   site: config.site.url,
@@ -34,9 +36,14 @@ export default defineConfig({
     },
   },
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    remarkPlugins: [
+        remarkMath,
+        remarkToc,
+        [remarkCollapse, { test: "Table of contents" }],
+    ],
+    rehypePlugins: [rehypeKatex],
     shikiConfig: {
-      themes: { light: "min-light", dark: "night-owl" },
+      themes: { light: "github-light-default", dark: "github-dark-default" },
       defaultColor: false,
       wrap: false,
       transformers: [
@@ -52,13 +59,40 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "Google Sans Code",
-      cssVariable: "--font-google-sans-code",
+      name: "Lexend Mega",
+      cssVariable: "--font-header",
+      provider: fontProviders.google(),
+      fallbacks: ["sans-serif"],
+      weights: [700],
+      styles: ["normal"],
+      formats: ["woff2", "woff"],
+    },
+    {
+      name: "Lexend Deca",
+      cssVariable: "--font-heading",
+      provider: fontProviders.google(),
+      fallbacks: ["sans-serif"],
+      weights: [500, 600, 700],
+      styles: ["normal"],
+      formats: ["woff2", "woff"],
+    },
+    {
+      name: "Lexend Deca",
+      cssVariable: "--font-body",
+      provider: fontProviders.google(),
+      fallbacks: ["sans-serif"],
+      weights: [400, 500, 600],
+      styles: ["normal"],
+      formats: ["woff2", "woff"],
+    },
+    {
+      name: "JetBrains Mono",
+      cssVariable: "--font-mono",
       provider: fontProviders.google(),
       fallbacks: ["monospace"],
-      weights: [300, 400, 500, 600, 700],
+      weights: [500, 600, 700],
       styles: ["normal", "italic"],
-      formats: ["woff", "ttf"],
+      formats: ["woff2", "woff"],
     },
   ],
   env: {

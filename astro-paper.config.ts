@@ -3,7 +3,7 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://ffrancoa.github.io/blog",
-    title: "El Geotecnista",
+    title: "F. F. A.",
     description: "Geotechnics from a casual, yet technical perspective.",
     author: "Francesco Franco A.",
     profile: "https://github.com/ffrancoa",
