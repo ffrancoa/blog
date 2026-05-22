@@ -7,6 +7,7 @@ import config from "@/config";
 
 export const GET: APIRoute = async context => {
   const fonts = fontData["--font-heading"];
+  console.log(JSON.stringify(fonts, null, 2));
   const regularFontPath = getFontPathByWeight(fonts, 500);
   const boldFontPath = getFontPathByWeight(fonts, 700);
 
