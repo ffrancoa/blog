@@ -28,20 +28,20 @@ export const GET: APIRoute = async ({ props, url }) => {
   }
 
   const fonts = fontData["--font-heading"];
-  const regularFontPath = getFontPathByWeight(fonts, 400);
-  const boldFontPath = getFontPathByWeight(fonts, 700);
+  const headerFonts = fontData["--font-header"];
+  
+  const regularFontPath = getFontPathByWeight(fonts, 500, { format: "woff2" });
+  const boldFontPath = getFontPathByWeight(fonts, 700, { format: "woff2" });
+  const headerFontPath = getFontPathByWeight(headerFonts, 700, { format: "woff2" });
 
-  if (regularFontPath === undefined || boldFontPath === undefined) {
+  if (regularFontPath === undefined || boldFontPath === undefined || headerFontPath === undefined) {
     throw new Error("Cannot find the font path.");
   }
 
   const [regularData, boldData] = await Promise.all([
-    fetch(experimental_getFontFileURL(regularFontPath, url)).then(res =>
-      res.arrayBuffer()
-    ),
-    fetch(experimental_getFontFileURL(boldFontPath, url)).then(res =>
-      res.arrayBuffer()
-    ),
+    fetch(experimental_getFontFileURL(regularFontPath, url)).then(res => res.arrayBuffer()),
+    fetch(experimental_getFontFileURL(boldFontPath, url)).then(res => res.arrayBuffer()),
+    fetch(experimental_getFontFileURL(headerFontPath, url)).then(res => res.arrayBuffer()),
   ]);
 
   const svg = await satori(
@@ -55,6 +55,7 @@ export const GET: APIRoute = async ({ props, url }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          fontFamily: "Lexend Exa",
         },
         children: [
           {
@@ -173,14 +174,20 @@ export const GET: APIRoute = async ({ props, url }) => {
       embedFont: true,
       fonts: [
         {
-          name: "JetBrains Mono",
+          name: "Lexend Deca",
           data: regularData,
-          weight: 400,
+          weight: 500,
           style: "normal",
         },
         {
-          name: "JetBrains Mono",
+          name: "Lexend Deca",
           data: boldData,
+          weight: 700,
+          style: "normal",
+        },
+        {
+          name: "Lexend Exa",
+          data: headerData,
           weight: 700,
           style: "normal",
         },

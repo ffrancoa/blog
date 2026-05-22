@@ -7,8 +7,8 @@ import config from "@/config";
 
 export const GET: APIRoute = async context => {
   const fonts = fontData["--font-heading"];
-  const regularFontPath = getFontPathByWeight(fonts, 400);
-  const boldFontPath = getFontPathByWeight(fonts, 700);
+  const regularFontPath = getFontPathByWeight(fonts, 500, { format: "woff2" });
+  const boldFontPath = getFontPathByWeight(fonts, 700, { format: "woff2" });
 
   if (regularFontPath === undefined || boldFontPath === undefined) {
     throw new Error("Cannot find the font path.");
@@ -145,13 +145,13 @@ export const GET: APIRoute = async context => {
       embedFont: true,
       fonts: [
         {
-          name: "JetBrains Mono",
+          name: "Lexend Deca",
           data: regularData,
-          weight: 400,
+          weight: 500,
           style: "normal",
         },
         {
-          name: "JetBrains Mono",
+          name: "Lexend Deca",
           data: boldData,
           weight: 700,
           style: "normal",
