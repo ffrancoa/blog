@@ -30,9 +30,17 @@ export const GET: APIRoute = async ({ props, url }) => {
   const fonts = fontData["--font-heading"];
   const headerFonts = fontData["--font-header"];
   
-  const regularFontPath = getFontPathByWeight(fonts, 500);
-  const boldFontPath = getFontPathByWeight(fonts, 700);
-  const headerFontPath = getFontPathByWeight(headerFonts, 700);
+  const regularFontPath = fonts
+  .flatMap(f => f.src)
+  .find(s => s.format === "truetype")?.url;
+  const boldFontPath = fonts
+  .filter(f => f.weight === "700")
+  .flatMap(f => f.src)
+  .find(s => s.format === "truetype")?.url;
+  const headerFontPath = headerFonts
+  .filter(f => f.weight === "700")
+  .flatMap(f => f.src)
+  .find(s => s.format === "truetype")?.url;
 
   if (regularFontPath === undefined || boldFontPath === undefined || headerFontPath === undefined) {
     throw new Error("Cannot find the font path.");
