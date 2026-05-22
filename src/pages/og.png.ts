@@ -34,7 +34,7 @@ export const GET: APIRoute = async context => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "Lexend",
+          fontFamily: "Lexend Deca",
         },
         children: [
           {
