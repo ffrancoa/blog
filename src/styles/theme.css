@@ -19,8 +19,8 @@
   --background: #1e2326;
   --foreground: #d3c6aa;
   --accent: #a7c080;
-  --accent-foreground: #e69875;
-  --muted: #dbbc7f;
+  --accent-foreground: #dbbc7f;
+  --muted: #e67e80;
   --muted-foreground: #9da9a0;
   --border: #7a8478;
 }
@@ -30,8 +30,8 @@
   --background: #1e2326;
   --foreground: #d3c6aa;
   --accent: #a7c080;
-  --accent-foreground: #e67e80;
-  --muted: #dbbc7f;
+  --accent-foreground: #dbbc7f;
+  --muted: #e67e80;
   --muted-foreground: #9da9a0;
   --border: #7a8478;
 }

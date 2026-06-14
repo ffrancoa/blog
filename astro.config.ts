@@ -47,7 +47,7 @@ export default defineConfig({
       rehypePlugins: [rehypeKatex],
     }),
     shikiConfig: {
-      themes: { light: "github-light-default", dark: "github-dark-default" },
+      themes: { light: "everforest-dark", dark: "everforest-dark" },
       defaultColor: false,
       wrap: false,
       transformers: [
@@ -94,7 +94,7 @@ export default defineConfig({
       cssVariable: "--font-mono",
       provider: fontProviders.google(),
       fallbacks: ["monospace"],
-      weights: [500, 600, 700],
+      weights: [400, 500, 600],
       styles: ["normal", "italic"],
       formats: ["woff2", "ttf"],
     },

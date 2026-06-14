@@ -63,7 +63,7 @@ code, pre, kbd, samp {
   line-height: 1.4;
   color: var(--color-muted-foreground, currentColor);
   opacity: 0.75;
-  margin: 0.5em 0 0.5em 1em;
+  margin: 1.25em 0 1.25em 1em;
   padding: 0.4em 0.6em;
   border-left: 2px solid var(--color-border);
 }
@@ -72,8 +72,8 @@ code, pre, kbd, samp {
   .marginnote {
     float: right;
     clear: right;
-    width: 12rem;
-    margin-right: -13rem;
+    width: 14rem;
+    margin-right: -15rem;
     margin-left: 1rem;
     margin-top: 0.2em;
     margin-bottom: 0;
@@ -84,3 +84,12 @@ code, pre, kbd, samp {
   }
 }
 
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+.hover-wiggle:hover {
+  animation: wiggle 0.3s ease-in-out 2;
+}

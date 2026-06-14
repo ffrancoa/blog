@@ -26,6 +26,6 @@ const { title, description, ...props } = data;
       {title}
     </Heading>
   </a>
-  <Datetime {...props} />
-  <p>{description}</p>
+  <Datetime {...props} class="my-1 [&_span]:text-[0.95rem]! [&_time]:text-[0.95rem]! [&_span]:sm:text-base! [&_time]:sm:text-base!" />
+  <p class="text-[0.95rem] sm:text-base">{description}</p>
 </li>

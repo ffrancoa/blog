@@ -232,7 +232,7 @@ const ogImage = ogImageUrl
         : "-top-3";
 
       const copyButton = document.createElement("button");
-      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted-foreground border border-muted-foreground px-2 py-1 text-xs leading-4 text-background font-medium`;
       copyButton.innerHTML = copyButtonLabel;
       codeBlock.setAttribute("tabindex", "0");
       codeBlock.appendChild(copyButton);
@@ -252,9 +252,13 @@ const ogImage = ogImageUrl
       await navigator.clipboard.writeText(text ?? "");
 
       button.innerText = "Copied";
+      button.classList.replace("bg-muted-foreground", "bg-muted");
+      button.classList.replace("border-muted-foreground", "border-muted");
 
       setTimeout(() => {
         button.innerText = copyButtonLabel;
+        button.classList.replace("bg-muted", "bg-muted-foreground");
+        button.classList.replace("border-muted", "border-muted-foreground");
       }, 700);
     }
   }

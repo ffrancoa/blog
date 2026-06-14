@@ -25,7 +25,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
 ---
 
-<Layout>
+<Layout title="F. Franco | Blog">
   <Header />
   <main
     id="main-content"
@@ -34,8 +34,8 @@ const homePath = getRelativeLocaleUrl(locale, "");
     class="app-layout"
   >
     <section id="hero" class="border-border border-b pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        <span class="text-accent">Let's get</span> <em class="text-accent-foreground">dirty</em>
+      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-4xl">
+        <span class="text-accent">Let's get</span> <em class="text-muted">dirty</em>
       </h1>
       <a
         target="_blank"
@@ -47,7 +47,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
         <IconRss
           width={20}
           height={20}
-          class="stroke-accent-foreground scale-125 stroke-3 rtl:-rotate-90"
+          class="stroke-muted scale-125 stroke-3 rtl:-rotate-90"
         />
         <span class="sr-only">RSS Feed</span>
       </a>
@@ -116,7 +116,7 @@ const homePath = getRelativeLocaleUrl(locale, "");
     }
 
     <div class="my-8 text-center">
-      <LinkButton href={getRelativeLocaleUrl(locale, "posts")}>
+      <LinkButton href={getRelativeLocaleUrl(locale, "posts")} class="hover-wiggle">
         {t.home.allPosts}
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>

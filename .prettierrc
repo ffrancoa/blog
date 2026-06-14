@@ -15,6 +15,13 @@
       "options": {
         "parser": "astro"
       }
+    },
+    {
+      "files": "src/content/posts/**/*.md",
+      "options": {
+        "printWidth": 88,
+        "proseWrap": "always"
+      }
     }
   ]
 }
