@@ -7,6 +7,7 @@ import {
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import { unified } from "@astrojs/markdown-remark";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import {
@@ -37,12 +38,14 @@ export default defineConfig({
     },
   },
   markdown: {
-    remarkPlugins: [
+    processor: unified({
+      remarkPlugins: [
         remarkMath,
         remarkToc,
         [remarkCollapse, { test: "Table of contents" }],
-    ],
-    rehypePlugins: [rehypeKatex],
+      ],
+      rehypePlugins: [rehypeKatex],
+    }),
     shikiConfig: {
       themes: { light: "github-light-default", dark: "github-dark-default" },
       defaultColor: false,
@@ -60,30 +63,30 @@ export default defineConfig({
   },
   fonts: [
     {
-      name: "Lexend Mega",
+      name: "Fraunces",
       cssVariable: "--font-header",
       provider: fontProviders.google(),
-      fallbacks: ["sans-serif"],
+      fallbacks: ["serif"],
       weights: [700],
-      styles: ["normal"],
+      styles: ["italic"],
       formats: ["woff2", "ttf"],
     },
     {
-      name: "Lexend Deca",
+      name: "Fraunces",
       cssVariable: "--font-heading",
       provider: fontProviders.google(),
-      fallbacks: ["sans-serif"],
-      weights: [500, 600, 700],
-      styles: ["normal"],
+      fallbacks: ["serif"],
+      weights: [600, 700, 800],
+      styles: ["normal", "italic"],
       formats: ["woff2", "ttf"],
     },
     {
-      name: "Lexend Deca",
+      name: "Figtree",
       cssVariable: "--font-body",
       provider: fontProviders.google(),
       fallbacks: ["sans-serif"],
-      weights: [400, 500, 600],
-      styles: ["normal"],
+      weights: [300, 400, 500, 600, 700],
+      styles: ["normal", "italic"],
       formats: ["woff2", "ttf"],
     },
     {

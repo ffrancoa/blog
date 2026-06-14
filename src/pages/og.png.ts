@@ -18,7 +18,7 @@ export const GET: APIRoute = async context => {
     .flatMap(f => f.src)
     .find(s => s.format === "truetype")?.url;
   const headerFontPath = headerFonts
-    .filter(f => f.weight === "700")
+    .filter(f => f.weight === "700" && f.style === "italic")
     .flatMap(f => f.src)
     .find(s => s.format === "truetype")?.url;
 
@@ -43,7 +43,7 @@ export const GET: APIRoute = async context => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "Lexend Exa",
+          fontFamily: "Fraunces",
         },
         children: [
           {
@@ -154,22 +154,22 @@ export const GET: APIRoute = async context => {
       embedFont: true,
       fonts: [
         {
-          name: "Lexend Deca",
+          name: "Fraunces",
           data: regularData,
           weight: 500,
           style: "normal",
         },
         {
-          name: "Lexend Deca",
+          name: "Fraunces",
           data: boldData,
           weight: 700,
           style: "normal",
         },
         {
-          name: "Lexend Exa",
+          name: "Fraunces",
           data: headerData,
           weight: 700,
-          style: "normal",
+          style: "italic",
         },
       ],
     }
