@@ -29,27 +29,32 @@ export const GET: APIRoute = async ({ props, url }) => {
 
   const fonts = fontData["--font-heading"];
   const headerFonts = fontData["--font-header"];
-  
-  const regularFontPath = fonts
-    .flatMap(f => f.src)
-    .find(s => s.format === "truetype")?.url;
-  const boldFontPath = fonts
-    .filter(f => f.weight === "700")
-    .flatMap(f => f.src)
-    .find(s => s.format === "truetype")?.url;
-  const headerFontPath = headerFonts
-    .filter(f => f.weight === "700" && f.style === "italic")
-    .flatMap(f => f.src)
-    .find(s => s.format === "truetype")?.url;
 
-  if (regularFontPath === undefined || boldFontPath === undefined || headerFontPath === undefined) {
+  // --font-heading ships weights 600/700/800; 600 is the lightest face available.
+  const regularFontPath = getFontPathByWeight(fonts, 600);
+  const boldFontPath = getFontPathByWeight(fonts, 700);
+  const headerFontPath = getFontPathByWeight(headerFonts, 700, {
+    style: "italic",
+  });
+
+  if (
+    regularFontPath === undefined ||
+    boldFontPath === undefined ||
+    headerFontPath === undefined
+  ) {
     throw new Error("Cannot find the font path.");
   }
 
   const [regularData, boldData, headerData] = await Promise.all([
-    fetch(experimental_getFontFileURL(regularFontPath, url)).then(res => res.arrayBuffer()),
-    fetch(experimental_getFontFileURL(boldFontPath, url)).then(res => res.arrayBuffer()),
-    fetch(experimental_getFontFileURL(headerFontPath, url)).then(res => res.arrayBuffer()),
+    fetch(experimental_getFontFileURL(regularFontPath, url)).then(res =>
+      res.arrayBuffer()
+    ),
+    fetch(experimental_getFontFileURL(boldFontPath, url)).then(res =>
+      res.arrayBuffer()
+    ),
+    fetch(experimental_getFontFileURL(headerFontPath, url)).then(res =>
+      res.arrayBuffer()
+    ),
   ]);
 
   const svg = await satori(
@@ -184,7 +189,7 @@ export const GET: APIRoute = async ({ props, url }) => {
         {
           name: "Fraunces",
           data: regularData,
-          weight: 500,
+          weight: 400,
           style: "normal",
         },
         {

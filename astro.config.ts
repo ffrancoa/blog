@@ -19,6 +19,7 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 import config from "./astro-paper.config";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeCallouts from "rehype-callouts";
 
 export default defineConfig({
   site: config.site.url,
@@ -44,7 +45,7 @@ export default defineConfig({
         remarkToc,
         [remarkCollapse, { test: "Table of contents" }],
       ],
-      rehypePlugins: [rehypeKatex],
+      rehypePlugins: [rehypeKatex, rehypeCallouts],
     }),
     shikiConfig: {
       themes: { light: "everforest-dark", dark: "everforest-dark" },
